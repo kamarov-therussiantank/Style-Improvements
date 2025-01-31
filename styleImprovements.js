@@ -30,7 +30,6 @@ GM_addStyle(`
 }
 #game {
     top: 0;
-    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .5));
 }
 #secondaryContent, #tertiaryContent {
     margin-top: 7px;
