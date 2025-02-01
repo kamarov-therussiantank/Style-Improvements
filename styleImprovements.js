@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Style Improvements
 // @namespace    http://tampermonkey.net/
-// @version      2.0.0
+// @version      2.1.0
 // @license      GPL-3.0
 // @description  Simple style improvements for better player experience.
 // @author       kamarov
@@ -37,11 +37,44 @@ GM_addStyle(`
 a {
     margin-top: 7px;
 }
+#tankinfo table {
+    background: #a1a1a1;
+    border-radius: 10px;
+    border-top: 2px solid #71717150;
+}
+:root.dark #tankinfo table {
+    background: #161616;
+    border-radius: 10px;
+    border-top: 2px solid #10101050;
+}
+#tankinfo .progress {
+    background: #a1a1a1;
+}
+:root.dark #tankinfo .progress {
+    background: #161616;
+}
+#tankinfo .progress .border {
+    border-color: #71717150;
+}
+:root.dark #tankinfo .progress .border {
+    border-color: #10101050;
+}
+tr {
+    background: #a1a1a1;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 0 0 5px 0;
+}
+:root.dark tr {
+    background: #161616;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 0 0 5px 0;
+}
 #chat form {
     border-radius: 3px;
     border: 1px solid var(--jq-borderColorDefault);
     background: rgb(255 255 255 / 80%);
-    animation-duration: 0s;
     margin-left: 20px;
     padding: 1px;
     width: 249px !important;
@@ -133,6 +166,35 @@ a {
 #overlay {
     background-color: rgb(0 0 0 / 90%);
 }
+#overlay>button {
+    font-size: 30px;
+}
+button.warning {
+    background: red;
+    border-radius: 3px;
+}
+#overlay .messages .message {
+    background: #24cb19 !important;
+    border-radius: 3px;
+    color: #fff;
+}
+:root.dark #overlay .messages .message {
+    background: #24cb19 !important;
+}
+#overlay .messages .message.important {
+    background: red !important;
+}
+:root.dark #overlay .messages .message.important {
+    background: red !important;
+}
+#overlay .messages .message .headers {
+    border-bottom: 1px solid #fff;
+}
+#overlay input[type="text"], #overlay input[type="password"], #overlay textarea {
+    background-color: #334655c7;
+    border: 2px solid #315d83b5;
+    border-radius: 3px;
+}
 #overlay .newGame .premium {
     color: #000;
     display: inline-block;
@@ -160,37 +222,37 @@ a {
     background: repeating-radial-gradient(#292929, #24242499 100px) !important;
 }
 #shopItem-122 {
-    background: repeating-radial-gradient(#1c8a3c, #2cdc60, #1c8a3c99 100px);
+    background: repeating-radial-gradient(#1c8a3c, #2cdc60, #1c8a3c99 100px) !important;
 }
 :root.dark #shopItem-122 {
     background: repeating-radial-gradient(#1c8a3c, #2cdc60, #1c8a3c99 100px) !important;
 }
 #shopItem-120 {
-    background: linear-gradient(to bottom, #fcdc88, #f8c23a);
+    background: linear-gradient(to bottom, #fcdc88, #f8c23a) !important;
 }
 :root.dark #shopItem-120 {
     background: linear-gradient(to bottom, #fcdc88, #f8c23a) !important;
 }
 #virtualShopItem-500 {
-    background: repeating-linear-gradient(55deg, #101010, #333 100px);
+    background: repeating-linear-gradient(55deg, #101010, #333 100px) !important;
 }
 :root.dark #overlay #virtualShopItem-500 {
     background: repeating-linear-gradient(55deg, #101010, #333 100px) !important;
 }
 #virtualShopItem-520 {
-    background: repeating-linear-gradient(45deg, #ff00d4, #256cff, #00ffff, #02ff00, #e7ff00, #ffb300, red, #ff00d4 270px);
+    background: repeating-linear-gradient(45deg, #ff00d4, #256cff, #00ffff, #02ff00, #e7ff00, #ffb300, red, #ff00d4 270px) !important;
 }
 :root.dark #overlay #virtualShopItem-520 {
     background: repeating-linear-gradient(45deg, #ff00d4, #256cff, #00ffff, #02ff00, #e7ff00, #ffb300, red, #ff00d4 270px) !important;
 }
 #virtualShopItem-512 {
-    background: linear-gradient(to bottom, #e2bf49, #664600);
+    background: linear-gradient(to bottom, #e2bf49, #664600) !important;
 }
 :root.dark #overlay #virtualShopItem-512 {
     background: linear-gradient(to bottom, #e2bf49, #664600) !important;
 }
 #virtualShopItem-509 {
-    background: linear-gradient(to bottom, #e2bf49, #664600);
+    background: linear-gradient(to bottom, #e2bf49, #664600) !important;
 }
 :root.dark #overlay #virtualShopItem-509 {
     background: linear-gradient(to bottom, #e2bf49, #664600) !important;
