@@ -1,16 +1,16 @@
 // ==UserScript==
 // @name         Style Improvements
 // @namespace    http://tampermonkey.net/
-// @version      2.1.0
+// @version      3.1.0
 // @license      GPL-3.0
-// @description  Simple style improvements for better player experience.
+// @description  Simple style improvements for better experience.
 // @author       kamarov
 // @match        https://tanktrouble.com/*
 // @run-at       document-end
 // @grant        GM_addStyle
 // @require      https://update.greasyfork.org/scripts/482092/1297984/TankTrouble%20Development%20Library.js
 // ==/UserScript==
-
+ 
 GM_addStyle(`
 @keyframes moveLeft {
   0% {
@@ -37,39 +37,75 @@ GM_addStyle(`
 a {
     margin-top: 7px;
 }
+#tankinfo .content {
+    background: #eee;
+}
+:root.dark #tankinfo .content {
+    background: #292929;
+}
+.box .tab.bottom {
+    background: #eee;
+}
+.box .tab.left {
+    background: #eee;
+}
+.box .tab.right {
+    background: #eee;
+}
+:root.dark .box .tab.bottom {
+    background: #292929 !important;
+}
+:root.dark .box .tab.left {
+    background: #292929 !important;
+}
+:root.dark .box .tab.right {
+    background: #292929 !important;
+}
 #tankinfo table {
-    background: #a1a1a1;
+    background: #ddd;
     border-radius: 10px;
-    border-top: 2px solid #71717150;
+    border-top: 2px solid #7171712b;
+    margin: 8px 0 0 0;
 }
 :root.dark #tankinfo table {
-    background: #161616;
+    background: #222;
     border-radius: 10px;
     border-top: 2px solid #10101050;
 }
 #tankinfo .progress {
-    background: #a1a1a1;
+    background: #ddd;
 }
 :root.dark #tankinfo .progress {
-    background: #161616;
+    background: #222;
 }
 #tankinfo .progress .border {
-    border-color: #71717150;
+    border-color: #7171712b;
 }
 :root.dark #tankinfo .progress .border {
     border-color: #10101050;
 }
-tr {
-    background: #a1a1a1;
+#tankinfo tr {
+    background: #ddd;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    padding: 0 0 5px 0;
 }
-:root.dark tr {
-    background: #161616;
+:root.dark #tankinfo tr {
+    background: #222;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    padding: 0 0 5px 0;
+}
+#tankinfo .actions:not(.centered) {
+    text-align: center;
+    margin: 8px 0 0 0;
+}
+.actions.centered {
+    margin: 8px 0 0 0;
+}
+#tankinfo .username {
+    text-shadow: 0px 0px 6px black;
+}
+#tankinfo .icon {
+    top: -154px;
 }
 #chat form {
     border-radius: 3px;
@@ -144,17 +180,35 @@ tr {
 #chat:not(.opening) textarea, #chat:not(.open) textarea {
     margin-left: -20px !important;
 }
+#chat .handle {
+    width: 10px;
+    height: 10px;
+}
 .newsPost {
     filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .5));
 }
 .forum .bubble {
-    border: #cccccc90 2px solid;
-    border-radius: 7px;
-    transition: background .7s, border .3s;
+    background: #eee;
+    border: #ffffff00 2px solid;
+    border-radius: 15px;
+    transition: background .7s, border .7s;
     filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .5));
 }
+:root.dark .forum .bubble {
+    background: #292929;
+    border: #ffffff00 2px solid;
+}
+.forum .thread.selectable:not(.editing) .bubble:hover {
+    background: #e2e2e2 !important
+}
+:root.dark .forum .thread.selectable:not(.editing) .bubble:hover {
+    background: #222 !important
+}
 .forum .editing .bubble {
-    background-color: #fdfdfd;
+    background-color: #ebedf7;
+}
+:root.dark .forum .editing .bubble {
+    background-color: #6b7089;
 }
 .forum .bubble .pointer {
     background: inherit;
@@ -198,7 +252,7 @@ button.warning {
 #overlay .newGame .premium {
     color: #000;
     display: inline-block;
-    background: linear-gradient(to bottom, rgb(238, 238, 238), rgb(204, 204, 204));
+    background: linear-gradient(to bottom,#eee,#ccc);
     border-radius: 7px;
     border: none;
     position: relative;
@@ -207,7 +261,7 @@ button.warning {
 }
 :root.dark #overlay .newGame .premium {
     color: #fff;
-    background: linear-gradient(to bottom, rgb(41, 41, 41), rgb(32, 32, 32)) !important;
+    background: linear-gradient(to bottom,#292929,#242424) !important;
 }
 #overlay input[type="checkbox"]+label::before {
     border: 2px solid red;
@@ -216,46 +270,60 @@ button.warning {
     color: #fff;
 }
 #overlay .shopItem {
-    background: repeating-radial-gradient(#555, #cccccc99 100px);
+    background: repeating-radial-gradient(#ccc, #55555599 100px);
+    border: #55555599 dotted;
 }
 :root.dark #overlay .shopItem {
-    background: repeating-radial-gradient(#292929, #24242499 100px) !important;
+    background: repeating-radial-gradient(#292929, #00000099 100px) !important;
+    border: #00000099 dotted;
 }
 #shopItem-122 {
     background: repeating-radial-gradient(#1c8a3c, #2cdc60, #1c8a3c99 100px) !important;
+    border: none;
 }
 :root.dark #shopItem-122 {
     background: repeating-radial-gradient(#1c8a3c, #2cdc60, #1c8a3c99 100px) !important;
+    border: none;
 }
 #shopItem-120 {
     background: linear-gradient(to bottom, #fcdc88, #f8c23a) !important;
+    border: none;
 }
 :root.dark #shopItem-120 {
     background: linear-gradient(to bottom, #fcdc88, #f8c23a) !important;
+    border: none;
 }
 #virtualShopItem-500 {
     background: repeating-linear-gradient(55deg, #101010, #333 100px) !important;
+    border: none;
 }
 :root.dark #overlay #virtualShopItem-500 {
     background: repeating-linear-gradient(55deg, #101010, #333 100px) !important;
+    border: none;
 }
 #virtualShopItem-520 {
     background: repeating-linear-gradient(45deg, #ff00d4, #256cff, #00ffff, #02ff00, #e7ff00, #ffb300, red, #ff00d4 270px) !important;
+    border: none;
 }
 :root.dark #overlay #virtualShopItem-520 {
     background: repeating-linear-gradient(45deg, #ff00d4, #256cff, #00ffff, #02ff00, #e7ff00, #ffb300, red, #ff00d4 270px) !important;
+    border: none;
 }
 #virtualShopItem-512 {
     background: linear-gradient(to bottom, #e2bf49, #664600) !important;
+    border: none;
 }
 :root.dark #overlay #virtualShopItem-512 {
     background: linear-gradient(to bottom, #e2bf49, #664600) !important;
+    border: none;
 }
 #virtualShopItem-509 {
     background: linear-gradient(to bottom, #e2bf49, #664600) !important;
+    border: none;
 }
 :root.dark #overlay #virtualShopItem-509 {
     background: linear-gradient(to bottom, #e2bf49, #664600) !important;
+    border: none;
 }
 .shopItem .soldOut text {
     font-size: 30pt;
@@ -263,3 +331,5 @@ button.warning {
     transform: translate(70px, 150px) rotate(0deg);
 }
 `);
+ 
+UIConstants.TANK_ICON_OUTLINE_WIDTH = 0.5
